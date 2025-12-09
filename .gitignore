@@ -1,0 +1,13 @@
+# .gitignore
+
+# ไฟล์ขยะของ Mac (สำคัญมาก รกชิบหาย)
+.DS_Store
+
+# ไม่เอารูปที่ User อัปโหลดขึ้น (หนัก Server)
+uploads/*
+!uploads/index.php
+
+# ถ้ามีโฟลเดอร์พวกนี้ ให้ข้ามไป (เผื่ออนาคตมึงลง Library)
+vendor/
+node_modules/
+.env
