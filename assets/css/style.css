@@ -272,50 +272,284 @@ a { text-decoration: none; }
     box-shadow: 0 4px 10px rgba(9, 132, 227, 0.3);
 }
 
-
 /* =========================================
-   4. Mobile Responsive
+   4. Mobile Navbar Responsive
+   ========================================= */
+/* =========================================
+   4. Mobile Navbar Responsive (ฉบับแก้ว่าง)
    ========================================= */
 @media (max-width: 991px) {
+    
+    /* ตัว Navbar หลัก */
     .floating-nav {
-        border-radius: 20px;
-        padding: 15px;
-        width: 95%;
+        position: relative; /* เพื่อให้เมนูย่อยอ้างอิงตำแหน่งจากตัวนี้ */
+        border-radius: 50px; /* ปรับให้มนกว่าเดิม */
+        padding: 12px 20px;
+        width: 92%;
         margin-top: 15px;
     }
+
+    /* เมนูย้อย (Dropdown) */
     .navbar-collapse {
+        /* 🔥 ทีเด็ด: สั่งให้ลอยหลุดจาก Navbar ไปเลย */
+        position: absolute; 
+        top: 100%;       /* ให้เริ่มต่อจากขอบล่างของ Navbar */
+        left: 0;
+        width: 100%;     /* กว้างเต็ม Navbar */
+        z-index: 1050;   /* ลอยทับทุกอย่าง */
+
         background: white;
-        padding: 20px;
-        border-radius: 20px;
-        margin-top: 15px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        
-        display: block !important;
-        visibility: hidden; opacity: 0;
-        transform: translateY(-10px);
-        transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        padding: 25px;
+        border-radius: 25px;
+        margin-top: 15px; /* เว้นระยะห่างจาก Navbar นิดนึง */
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15); /* เงาเข้มขึ้นนิดนึง */
+        border: 1px solid #f0f0f0;
+
+        /* Animation */
+        display: block !important; /* บังคับแสดง */
+        visibility: hidden;        /* แต่ซ่อนไว้ก่อน */
+        opacity: 0;                /* โปร่งใส */
+        transform: translateY(-20px); /* ขยับขึ้นไปนิดนึง */
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
+
+    /* ตอนกดเปิดเมนู */
     .navbar-collapse.show {
-        visibility: visible; opacity: 1; transform: translateY(0);
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0); /* เลื่อนลงมาที่เดิม */
     }
+
+    /* ซ่อนตอนกำลังหุบ */
     .collapsing {
+        position: absolute; top: 100%; left: 0; width: 100%;
         display: block !important; height: auto !important;
-        visibility: visible; opacity: 0; transform: translateY(-10px);
-        transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1) !important;
+        visibility: visible; opacity: 0;
+        transform: translateY(-20px);
+        transition: all 0.3s ease;
     }
-    /* Hamburger */
-    .navbar-toggler { border: none; font-size: 1.5rem; color: #2d3436; padding: 0; }
+
+    /* Hamburger Menu */
+    .navbar-toggler { 
+        border: none; 
+        font-size: 1.4rem; 
+        color: #2d3436; 
+        padding: 5px; 
+        margin-right: -5px;
+    }
     .navbar-toggler:focus { box-shadow: none; }
     
-    /* Elements Mobile */
-    .search-group { margin: 10px 0 20px 0; max-width: 100%; }
-    .search-input { background: #f8f9fa; }
-    .navbar-nav { text-align: center; gap: 10px; }
-    .btn-pill { width: 100%; display: block; margin-top: 5px; }
-    .dropdown-divider { border-top: 1px solid #f1f2f6; margin: 15px 0; }
-    .dropdown-menu {
-        background: #f8f9fa; border-radius: 15px; margin-top: 10px;
-        border: none; text-align: center;
+    /* จัดระเบียบของข้างใน */
+    .search-group { margin: 5px 0 20px 0; max-width: 100%; }
+    .search-input { background: #f8f9fa; border: 1px solid #eee; }
+    
+    .navbar-nav { text-align: center; gap: 8px; }
+    
+    .nav-link { 
+        padding: 10px; 
+        display: block; 
+        border-radius: 10px;
     }
-    .dropdown-item { color: #636e72 !important; }
+    .nav-link:hover { background: #f8f9fa; }
+    
+    .btn-pill { width: 100%; display: block; margin-top: 5px; }
+    
+    .dropdown-divider { border-top: 1px solid #f1f2f6; margin: 15px 0; }
+    
+    /* เมนูย่อยของ User (Dropdown ซ้อน Dropdown) */
+    .dropdown-menu {
+        background: #f8f9fa; 
+        border-radius: 15px; 
+        margin-top: 10px;
+        border: none; 
+        text-align: center;
+        box-shadow: none; /* ลบเงาซ้อนเงา */
+        padding: 10px;
+    }
+    .dropdown-item { color: #636e72 !important; padding: 10px; border-radius: 10px; }
+    .dropdown-item:hover { background: white; color: #0984e3 !important; }
+}
+/* =========================================
+   5. Index Page Add-ons (หน้าแรกฉบับ Marketplace)
+   ========================================= */
+
+/* --- Hero Banner --- */
+.hero-section {
+    background: linear-gradient(120deg, #0984e3 0%, #00cec9 100%);
+    border-radius: 30px;
+    padding: 60px 40px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(9, 132, 227, 0.25);
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+.hero-section::before {
+    content: '\f4c4';
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    right: -20px; bottom: -50px;
+    font-size: 15rem;
+    color: rgba(255,255,255,0.1);
+    transform: rotate(-15deg);
+}
+
+/* --- Category Icons (หมวดหมู่สินค้า) --- */
+.category-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.category-scroll {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    
+    /* 🔥 Padding กันตัดตอน Hover */
+    padding: 20px 20px 30px 20px; 
+    
+    margin-bottom: 20px;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    justify-content: center; /* พยายามจัดกลางถ้าทำได้ */
+}
+.category-scroll::-webkit-scrollbar { display: none; }
+
+.category-item {
+    min-width: 90px;
+    text-align: center;
+    color: #636e72;
+    transition: 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.category-icon {
+    width: 65px; height: 65px;
+    background: white;
+    border-radius: 22px; 
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+    margin: 0 auto 12px;
+    
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.02);
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: #0984e3;
+}
+
+/* Hover Effect PC */
+.category-item:hover .category-icon {
+    background: linear-gradient(135deg, #0984e3 0%, #00cec9 100%);
+    color: white;
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(9, 132, 227, 0.25);
+    border-color: transparent;
+}
+.category-item span {
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: block;
+    transition: 0.3s;
+}
+.category-item:hover span { 
+    color: #0984e3; 
+    font-weight: 700; 
+    transform: translateY(2px);
+}
+
+/* --- Product Card Add-ons --- */
+.btn-wishlist {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: rgba(255,255,255,0.9);
+    width: 35px; height: 35px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #b2bec3;
+    transition: 0.3s;
+    border: none;
+    z-index: 10;
+    cursor: pointer;
+}
+.btn-wishlist:hover {
+    background: #ff7675;
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(255, 118, 117, 0.4);
+}
+
+/* --- Footer --- */
+.simple-footer {
+    text-align: center;
+    padding: 40px 0;
+    color: #b2bec3;
+    font-size: 0.9rem;
+    margin-top: 50px;
+    border-top: 1px solid #dfe6e9;
+}
+
+/* =========================================
+   6. Mobile Category Fix (ฉบับ Grid เป๊ะทุกจอ)
+   ========================================= */
+@media (max-width: 767px) {
+    
+    /* เปลี่ยน Container เป็น Grid System */
+    .category-scroll {
+        display: grid !important;
+        /* สั่งให้แบ่งเป็น 4 คอลัมน์เท่าๆ กันเป๊ะ */
+        grid-template-columns: repeat(4, 1fr); 
+        
+        /* ระยะห่าง: บนล่าง 15px, ซ้ายขวา 10px */
+        gap: 15px 10px; 
+        
+        padding: 0 10px 20px 10px !important;
+        overflow-x: visible !important; /* ห้ามเลื่อนซ้ายขวา */
+        justify-content: center;
+    }
+
+    /* ตัวกล่องหมวดหมู่ */
+    .category-item {
+        width: auto !important;
+        min-width: 0 !important; /* ยกเลิกความกว้างขั้นต่ำของ PC ทิ้ง */
+        margin: 0 !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* ย่อไอคอนให้พอดีนิ้วโป้ง */
+    .category-icon {
+        width: 45px; height: 45px; /* ขนาดกำลังดี */
+        font-size: 1.1rem;
+        border-radius: 16px;
+        margin-bottom: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* เงาน้อยๆ พอ */
+    }
+
+    /* ตัวหนังสือ */
+    .category-item span {
+        font-size: 0.75rem; /* ตัวเล็กหน่อยจะได้ไม่ล้น */
+        line-height: 1.2;
+        text-align: center;
+        
+        /* ตัดคำถ้ามันยาวเกิน 1 บรรทัด */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
+    
+    /* ปิดเอฟเฟกต์ Hover ในมือถือ (กันค้าง) */
+    .category-item:hover .category-icon {
+        transform: none;
+        background: white;
+        color: #0984e3;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .category-item:hover span {
+        transform: none;
+        color: #636e72;
+    }
 }
