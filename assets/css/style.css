@@ -1,13 +1,14 @@
 /* assets/css/style.css */
 
 /* =========================================
-   1. Import Font & Global Styles
+   1. Global Setup (ตั้งค่าพื้นฐาน)
    ========================================= */
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap');
 
 body {
     font-family: 'Kanit', sans-serif;
-    background-color: #f3f5f9; /* สีพื้นหลังสว่างนวลๆ */
+    /* ปรับพื้นหลังให้เข้มขึ้นนิดนึง (เทาอมฟ้า) เพื่อให้ Navbar สีขาวเด่นออกมา */
+    background-color: #ecf0f3; 
     margin: 0;
     padding-bottom: 50px;
 }
@@ -15,20 +16,20 @@ body {
 a { text-decoration: none; }
 
 /* =========================================
-   2. Navbar ทรงแคปซูล (ฉบับ Clean White)
+   2. Navbar ทรงแคปซูล (Premium Modern)
    ========================================= */
 .floating-nav {
-    /* 🔥 เปลี่ยนเป็นสีขาวคลีนๆ */
     background: #ffffff;
     border-radius: 50px;
-    padding: 10px 30px; 
-    margin-top: 20px;
+    padding: 12px 30px; 
+    margin-top: 25px;
     
-    /* เงานุ่มๆ ให้ลอยเด่นออกมาจากพื้นหลัง */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    /* เงาฟุ้งๆ แบบ Soft Shadow */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5); 
     
-    width: 98%;          
-    max-width: 1600px;   
+    width: 95%;          
+    max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
     transition: all 0.3s ease;
@@ -38,75 +39,89 @@ a { text-decoration: none; }
 
 /* โลโก้ */
 .brand-logo {
-    color: #333 !important; /* เปลี่ยนตัวหนังสือเป็นสีเข้ม */
-    font-weight: 700;
-    font-size: 1.4rem;
+    color: #2d3436 !important;
+    font-weight: 800;
+    font-size: 1.5rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .brand-icon {
-    /* ไอคอนใช้สีไล่เฉดฟ้า */
-    background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+    background: linear-gradient(135deg, #0984e3 0%, #74b9ff 100%);
     color: white;
-    width: 35px; height: 35px;
-    border-radius: 50%;
+    width: 40px; height: 40px;
+    border-radius: 12px; /* สี่เหลี่ยมมน Squircle */
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem;
-    box-shadow: 0 4px 10px rgba(0, 114, 255, 0.3);
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(9, 132, 227, 0.3);
 }
 
 /* ช่องค้นหา (Search Bar) */
 .search-group {
     position: relative;
     width: 100%;
-    max-width: 500px; 
+    max-width: 450px; 
 }
 .search-input {
     width: 100%;
-    border-radius: 25px;
-    border: 1px solid #e0e0e0; /* เพิ่มขอบบางๆ */
-    padding: 10px 20px;
-    padding-right: 40px;
-    background: #f8f9fa; /* พื้นหลังเทาอ่อน */
-    color: #333; /* ตัวหนังสือสีเข้ม */
+    border-radius: 15px; 
+    border: 2px solid transparent;
+    padding: 12px 20px;
+    padding-right: 50px;
+    
+    background: #f1f2f6; /* พื้นหลังเทาอ่อน */
+    color: #2d3436;
     font-size: 0.95rem;
+    font-weight: 500;
     transition: 0.3s;
 }
-.search-input::placeholder {
-    color: #999;
-}
+.search-input::placeholder { color: #a4b0be; }
 .search-input:focus {
     background: white;
+    border-color: #0984e3; 
+    box-shadow: 0 0 0 4px rgba(9, 132, 227, 0.1);
     outline: none;
-    border-color: #0072ff; /* โฟกัสแล้วขอบสีฟ้า */
-    box-shadow: 0 0 0 4px rgba(0, 114, 255, 0.1);
 }
 .search-icon-btn {
     position: absolute;
-    right: 10px;
+    right: 15px;
     top: 50%;
     transform: translateY(-50%);
     border: none;
     background: none;
-    color: #999;
+    color: #a4b0be;
     transition: 0.3s;
 }
-.search-input:focus + .search-icon-btn {
-    color: #0072ff;
-}
+.search-input:focus + .search-icon-btn { color: #0984e3; }
 
-/* ลิงก์เมนู */
+/* เมนูลิงก์ */
 .nav-link {
-    color: #666 !important; /* สีเทาเข้ม */
-    font-weight: 500;
-    transition: 0.3s;
-    margin: 0 8px; 
+    color: #636e72 !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin: 0 10px;
+    position: relative;
 }
-.nav-link:hover { color: #0072ff !important; }
+/* ลูกเล่นขีดเส้นใต้ตอนชี้ */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0; height: 2px;
+    bottom: 0; left: 50%;
+    background: #0984e3;
+    transition: 0.3s;
+    transform: translateX(-50%);
+}
+.nav-link:hover { color: #0984e3 !important; }
+.nav-link:hover::after { width: 80%; }
+
+/* ❌ ซ่อนขีดเส้นใต้เฉพาะตรงรูปโปรไฟล์ (แก้ปัญหาขีดฟ้าโผล่) */
+.nav-item.dropdown .nav-link::after {
+    display: none !important;
+}
 
 /* ปุ่มต่างๆ */
 .btn-pill {
@@ -117,45 +132,63 @@ a { text-decoration: none; }
     transition: 0.3s;
 }
 
-/* ปุ่ม Login (ขอบสีฟ้า) */
-.btn-login-outline {
-    color: #0072ff;
-    border: 1px solid #0072ff;
-    background: transparent;
-}
-.btn-login-outline:hover {
-    background: #0072ff;
-    color: white;
-}
-
-/* ปุ่ม Register/ลงขาย (สีฟ้าไล่เฉด) */
+/* ปุ่ม + ลงขาย (เด่นสุด) */
 .btn-register-white {
-    background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
-    color: white;
+    background: linear-gradient(135deg, #0984e3 0%, #00cec9 100%);
+    color: white !important;
     border: none;
-    box-shadow: 0 4px 10px rgba(0, 114, 255, 0.3);
+    box-shadow: 0 5px 15px rgba(9, 132, 227, 0.3);
 }
 .btn-register-white:hover {
-    background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%); /* สลับสีตอน Hover */
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 114, 255, 0.4);
-    color: white;
+    box-shadow: 0 8px 20px rgba(9, 132, 227, 0.4);
+    background: linear-gradient(135deg, #00cec9 0%, #0984e3 100%);
 }
 
-.profile-avatar {
-    width: 40px; height: 40px;
-    background: #f1f3f5;
-    border-radius: 50%;
-    color: #333;
-    display: flex; align-items: center; justify-content: center;
-    border: 1px solid #e0e0e0;
+/* ปุ่ม Login */
+.btn-login-outline {
+    color: #2d3436;
+    background: #f1f2f6; 
+    border: none;
 }
+.btn-login-outline:hover {
+    background: #dfe6e9;
+    color: #000;
+}
+
+/* 🔥 Profile Avatar (แก้ปัญหาทะลุกรอบ) */
+.profile-avatar {
+    width: 45px; 
+    height: 45px;
+    background: #ffffff; /* พื้นหลังขาว */
+    border-radius: 50%;
+    color: #b2bec3; /* สีไอคอนเทา */
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid #e0e0e0; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    
+    /* ⭐ สำคัญ: ตัดส่วนเกินทิ้ง! รูปจะไม่ทะลุ */
+    overflow: hidden; 
+    transition: 0.3s;
+    font-size: 22px; /* ขนาดไอคอน */
+}
+/* เวลากด Dropdown หรือชี้ */
+.nav-link:hover .profile-avatar, 
+.nav-link.show .profile-avatar {
+    border-color: #0984e3;
+    color: #0984e3;
+    transform: scale(1.05);
+}
+.profile-avatar img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
 
 /* =========================================
    3. Product Grid (การ์ดสินค้า)
    ========================================= */
 .container-main {
-    max-width: 1600px; 
+    max-width: 1600px;
     margin: 40px auto;
     padding: 0 20px;
 }
@@ -163,191 +196,126 @@ a { text-decoration: none; }
 .section-title {
     font-weight: 700;
     margin-bottom: 20px;
-    color: #333;
+    color: #2d3436;
     font-size: 1.8rem;
 }
 
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 30px; 
+    gap: 30px;
 }
 
 .product-card {
     background: white;
-    border-radius: 15px;
+    border-radius: 20px; 
     overflow: hidden;
-    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05); /* เงาจางลงหน่อยให้ดูคลีน */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #f0f0f0;
+    border: none;
 }
 
 .product-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 50px -10px rgba(0,0,0,0.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
 }
 
 .product-img {
     width: 100%;
-    height: 200px; 
+    height: 220px; 
     object-fit: cover;
-    background-color: #f8f9fa;
+    background-color: #f1f2f6;
     transition: 0.3s;
 }
-.product-card:hover .product-img {
-    transform: scale(1.05);
-}
+.product-card:hover .product-img { transform: scale(1.05); }
 
 .product-info {
-    padding: 15px;
-    position: relative;
+    padding: 20px;
     background: white;
+    position: relative;
 }
 
 .product-title {
-    font-size: 1.1rem; 
+    font-size: 1.1rem;
     font-weight: 600;
     margin: 0 0 8px;
-    color: #333;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    color: #2d3436;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 
 .product-price {
-    /* ใช้สีฟ้าไล่เฉด */
-    background: -webkit-linear-gradient(#00c6ff, #0072ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #0984e3;
     font-size: 1.3rem;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 .product-date {
     font-size: 0.8rem;
-    color: #aaa;
-    margin-top: 5px;
-    display: block;
+    color: #b2bec3;
+    margin-top: 5px; display: block;
 }
 
 .btn-detail {
-    display: block;
-    width: 100%;
-    text-align: center;
-    background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
-    color: white;
+    display: block; width: 100%; text-align: center;
+    background: #f1f2f6;
+    color: #2d3436;
     padding: 10px 0;
     text-decoration: none;
     margin-top: 15px;
-    border-radius: 50px;
-    font-size: 0.95rem;
-    font-weight: 500;
+    border-radius: 15px;
+    font-size: 0.9rem; font-weight: 600;
     transition: 0.3s;
-    box-shadow: 0 4px 10px rgba(0, 114, 255, 0.3);
 }
-
 .btn-detail:hover {
-    background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);
-    transform: translateY(-2px);
+    background: #0984e3;
     color: white;
-    box-shadow: 0 6px 15px rgba(0, 114, 255, 0.4);
+    box-shadow: 0 4px 10px rgba(9, 132, 227, 0.3);
 }
 
 
 /* =========================================
-   4. Mobile Responsive (White Edition)
+   4. Mobile Responsive
    ========================================= */
 @media (max-width: 991px) {
-    
     .floating-nav {
-        position: relative;
-        width: 95%; 
+        border-radius: 20px;
+        padding: 15px;
+        width: 95%;
         margin-top: 15px;
-        border-radius: 50px;
-        padding: 10px 20px;
-        z-index: 1050;
-        background: white; /* มือถือก็สีขาว */
     }
-
-    /* เมนูย้อย */
     .navbar-collapse {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        margin-top: 10px;
-        
-        background: white; /* พื้นหลังเมนูสีขาว */
+        background: white;
         padding: 20px;
-        border-radius: 25px;
-        box-shadow: 0 15px 40px rgba(0,0,0,0.1); /* เงาเทา */
-        border: 1px solid #f0f0f0;
+        border-radius: 20px;
+        margin-top: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         
         display: block !important;
-        visibility: hidden;
-        opacity: 0;
-        transform: translateY(-15px) scale(0.98); 
+        visibility: hidden; opacity: 0;
+        transform: translateY(-10px);
         transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     }
-
     .navbar-collapse.show {
-        visibility: visible;
-        opacity: 1;
-        transform: translateY(0) scale(1);
+        visibility: visible; opacity: 1; transform: translateY(0);
     }
-
     .collapsing {
-        display: block !important;
-        height: auto !important;
-        visibility: visible;
-        opacity: 0;
-        transform: translateY(-15px) scale(0.98);
+        display: block !important; height: auto !important;
+        visibility: visible; opacity: 0; transform: translateY(-10px);
         transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1) !important;
     }
-
-    /* ปุ่ม Hamburger สีดำ */
-    .navbar-toggler {
-        border: none;
-        padding: 0;
-        color: #333; /* เปลี่ยนเป็นสีเข้ม */
-        font-size: 1.5rem;
-        transition: transform 0.4s ease;
-    }
-    .navbar-toggler[aria-expanded="true"] {
-        transform: rotate(90deg);
-    }
+    /* Hamburger */
+    .navbar-toggler { border: none; font-size: 1.5rem; color: #2d3436; padding: 0; }
     .navbar-toggler:focus { box-shadow: none; }
-
-    /* เนื้อหาข้างในมือถือ */
+    
+    /* Elements Mobile */
     .search-group { margin: 10px 0 20px 0; max-width: 100%; }
     .search-input { background: #f8f9fa; }
-    
     .navbar-nav { text-align: center; gap: 10px; }
-    
-    .btn-pill {
-        width: 100%;
-        display: block;
-        margin-top: 5px;
-    }
-    
-    .dropdown-divider {
-        border-top: 1px solid #eee;
-        margin: 15px 0;
-    }
-    
+    .btn-pill { width: 100%; display: block; margin-top: 5px; }
+    .dropdown-divider { border-top: 1px solid #f1f2f6; margin: 15px 0; }
     .dropdown-menu {
-        background: #f8f9fa;
-        border-radius: 15px;
-        margin-top: 10px;
-        border: none;
-        text-align: center;
-        transition: 0.3s;
+        background: #f8f9fa; border-radius: 15px; margin-top: 10px;
+        border: none; text-align: center;
     }
-    .dropdown-item {
-        color: #666 !important;
-    }
-    .dropdown-item:hover {
-        background: #e9ecef;
-        color: #0072ff !important;
-    }
+    .dropdown-item { color: #636e72 !important; }
 }
